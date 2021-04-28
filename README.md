@@ -11,3 +11,11 @@
 > 然后选择`wiki`
 >
 > 
+
+- `nacos`
+
+  > 链接：[https://nacos.io/zh-cn/](https://nacos.io/zh-cn/)
+  >
+  > 手册：[https://nacos.io/zh-cn/docs/what-is-nacos.html](https://nacos.io/zh-cn/docs/what-is-nacos.html)
+  >
+  > 外置数据库

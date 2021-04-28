@@ -12,11 +12,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>02-provider-nacos</artifactId>
 
-    <!--
-    导入SpringCloud的依赖BOM
-    导入SpringCloudAlibaba的依赖BOM
-    导入Nacos的注册中心的starter
-    -->
     <properties>
         <java.version>1.8</java.version>
         <!--导入SpringCloud的依赖BOM-->
@@ -68,6 +63,11 @@
         </dependency>
     </dependencies>
 
+    <!--
+导入SpringCloud的依赖BOM
+导入SpringCloudAlibaba的依赖BOM
+导入Nacos的注册中心的starter
+-->
     <dependencyManagement>
         <dependencies>
             <dependency>
