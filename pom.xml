@@ -11,7 +11,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.suyh</groupId>
     <artifactId>java-demo-springcloudalibaba</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -20,5 +20,12 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
+
+    <modules>
+        <module>01-consumer</module>
+        <module>01-provider</module>
+        <module>02-consumer-nacos</module>
+        <module>02-provider-nacos</module>
+    </modules>
 
 </project>
