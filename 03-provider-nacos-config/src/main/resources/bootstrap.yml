@@ -11,5 +11,6 @@ spring:
         server-addr: localhost:8847,localhost:8848,localhost:8849
         # 配置文件扩展名称
         file-extension: yml
-  profiles: # 配置文件只有获取，看不到！！！安全性也有保证
-    active: prod
+  profiles:
+    # 该配置可以在启动时的命令行参数中指定该值
+    active: dev
