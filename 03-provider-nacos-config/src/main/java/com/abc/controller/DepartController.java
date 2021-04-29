@@ -43,4 +43,9 @@ public class DepartController {
     public List<Depart> listHandle() {
         return service.listAllDeparts();
     }
+
+    @GetMapping("/depart/name")
+    public String departName() {
+        return service.getDepartName();
+    }
 }

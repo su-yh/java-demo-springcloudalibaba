@@ -10,4 +10,5 @@ public interface DepartService {
     boolean modifyDepart(Depart depart);
     Depart getDepartById(int id);
     List<Depart> listAllDeparts();
+    String getDepartName();
 }

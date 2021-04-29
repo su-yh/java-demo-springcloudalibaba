@@ -16,7 +16,7 @@ public class DepartServiceImpl implements DepartService {
     private DepartRepository repository;
 
     //使用@Value注解注入
-    @Value("${depart.name}")
+    @Value("${depart.name:UNKNOWN-VALUE}")
     private String departName;
 
     @Override
@@ -61,5 +61,10 @@ public class DepartServiceImpl implements DepartService {
     @Override
     public List<Depart> listAllDeparts() {
         return repository.findAll();
+    }
+
+    @Override
+    public String getDepartName() {
+        return departName;
     }
 }
