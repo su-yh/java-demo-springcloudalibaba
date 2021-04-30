@@ -1,0 +1,6 @@
+server:
+  port: 8184
+
+depart:
+  name: depart-suyh-namespace-prod
+

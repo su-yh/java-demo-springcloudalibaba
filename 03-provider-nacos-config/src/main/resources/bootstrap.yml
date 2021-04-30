@@ -15,6 +15,6 @@ spring:
         namespace: 5dee1ce0-c237-45c8-b5f0-222c73ffd273
         # 是否永远动态刷配置值，如果该值为false。则注解 @RefreshScope 被标注也是无效的，不会动态获取到实时更新的配置值
         refresh-enabled: true
-  profiles:
-    # 该配置可以在启动时的命令行参数中指定该值
-    active: dev
+#  profiles:
+#    # 该配置可以在启动时的命令行参数中指定该值
+#    active: dev
