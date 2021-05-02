@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>demo-601-nacos-provider</module>
+        <module>demo-611-gateway-config</module>
     </modules>
 
     <artifactId>demo-06-gateway</artifactId>
