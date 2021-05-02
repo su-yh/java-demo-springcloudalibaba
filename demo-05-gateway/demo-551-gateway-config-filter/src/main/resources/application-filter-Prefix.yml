@@ -14,6 +14,7 @@ spring:
           predicates:
             # 拦截所有请求
             - Path=/**
+          # 局部过滤器，仅对当前路由生效
           filters:
             # 将请求到网关的地址上面添加一个前缀路径
             # 如：localhost:/depart/get/1 ==>  localhost:/consumer/depart/get/1

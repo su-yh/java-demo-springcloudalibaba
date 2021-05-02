@@ -18,4 +18,18 @@ public class BeanConfiguration {
                         .id("prefixPath_filter"))
                 .build();
     }
+
+    // @Bean
+    public RouteLocator someRouteLocator02(RouteLocatorBuilder builder) {
+        return builder.routes()
+                .route(ps -> ps.path("/**")
+                        // 对该路由添加熔断降级的处理方法
+                        .filters(fs -> fs.circuitBreaker(config -> {
+                            config.setName("myCircuitBreaker");
+                            config.setFallbackUri("forward:/fallback");
+                        }))
+                        .uri("http://localhost:8080")
+                        .id("circuitBreaker_filter"))
+                .build();
+    }
 }

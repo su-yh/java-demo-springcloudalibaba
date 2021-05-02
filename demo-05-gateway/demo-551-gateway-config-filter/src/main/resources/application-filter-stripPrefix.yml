@@ -13,6 +13,7 @@ spring:
           uri: http://localhost:8080
           predicates:
             - Path=/**
+          # 局部过滤器，仅对当前路由生效
           filters:
             # 去除请求URL 的前面几个链接地址
             # 如：localhost/api/goods/consumer/depart/get/1 ==> localhost/consumer/depart/get/1

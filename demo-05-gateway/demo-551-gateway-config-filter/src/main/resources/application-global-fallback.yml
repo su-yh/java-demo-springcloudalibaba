@@ -6,6 +6,15 @@ spring:
     name: msc-gateway-config
   cloud:
     gateway:
+      # 全局过滤器：对网关的所有路由都生效
+      # 这里配置的是全局的熔断降级，我们也可以将它配置在指定路由下面仅对指定路由生效
+      default-filters:
+        - name: CircuitBreaker
+          args:
+            name: myCircuitBreaker
+            # 当发生异常或者错误时，将会转而访问当前网关实现的controller 中的/fallback URI
+            # 对应方法：com.abc.controller.GatewayFallbackController.fallback
+            fallbackUri: forward:/fallback
       # 配置 路由 集合
       routes:
         # 添加前缀 过滤器
