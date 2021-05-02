@@ -1,0 +1,20 @@
+server:
+  # 默认端口是8080
+  port: 9000
+spring:
+  application:
+    name: msc-gateway-config
+  cloud:
+    gateway:
+      # 配置 路由 集合
+      routes:
+        # 去除前缀 过滤器
+        - id: stripPrefix_filter
+          uri: http://localhost:8080
+          predicates:
+            - Path=/**
+          filters:
+            # 去除请求URL 的前面几个链接地址
+            # 如：localhost/api/goods/consumer/depart/get/1 ==> localhost/consumer/depart/get/1
+            - StripPrefix=2
+

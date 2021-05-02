@@ -1,0 +1,20 @@
+# 配置配置中心的服务地址
+spring:
+  application:
+    # 配置应用名称
+    name: msc-provider-depart
+  cloud:
+    nacos:
+      # 配置中心相关配置
+      config:
+        # 配置中心地址
+        server-addr: localhost:8847,localhost:8848,localhost:8849
+        # 配置文件扩展名称
+        file-extension: yml
+        # 名字空间的ID值
+        namespace: 5dee1ce0-c237-45c8-b5f0-222c73ffd273
+        # 是否永远动态刷配置值，如果该值为false。则注解 @RefreshScope 被标注也是无效的，不会动态获取到实时更新的配置值
+        refresh-enabled: true
+#  profiles:
+#    # 该配置可以在启动时的命令行参数中指定该值
+#    active: dev

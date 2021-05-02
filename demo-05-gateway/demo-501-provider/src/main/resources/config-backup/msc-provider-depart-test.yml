@@ -1,0 +1,5 @@
+server:
+  port: 8183
+
+depart:
+  name: depart-suyh-namespace-test
