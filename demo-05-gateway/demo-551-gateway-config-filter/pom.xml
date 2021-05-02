@@ -21,6 +21,11 @@
     </properties>
 
     <dependencies>
+        <!-- 借助Redis 实现令牌桶的限流 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+        </dependency>
         <!--resilience4j 依赖-->
 <!--        服务降级所需要的依赖-->
         <dependency>
