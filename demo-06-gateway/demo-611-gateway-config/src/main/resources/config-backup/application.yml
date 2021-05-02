@@ -1,29 +1,33 @@
-server:
-  # 默认端口是8080
-  port: 9001
+
 spring:
-  application:
-    name: msc-gateway-depart
   cloud:
-    nacos:
-      # 注册中心地址： 注册目的获取集群的ip及端口
-      discovery:
-        server-addr: localhost:8847,localhost:8848,localhost:8849
     gateway:
       discovery:
         locator:
           # 配置开启与DiscoveryClient整合
           enabled: true
+      # 配置 路由 集合
       routes:
-        # 动态路由配置：路由id
-        - id: ribbon_route
-          # 路由uri地址, loadbalancer://服务名称
-          # lb: 是指负载均衡的意思
-          # 服务名称是在注册中心存在的服务
-          # 在这里没有这个工程，所以需要另外实现一个这个服务，然后启动起来多个实例才能演示负载均衡
-          # 否则根本连不上
+        # 路由唯一ID
+        - id: provider_router
+          # 路由目标地址
           uri: lb://msc-provider-depart
+          # 断言：拦截请求的规则
+          # 详细拦截规则：/** 表示拦截所有请求，不管有几级 /abc/bcd/edf/...
+          # /* 只拦截 /abc 一级
           predicates:
-            # 拦截所有提供者的请求到提供者集群服务
             # 详细来自spring 框架的org.springframework.util.AntPathMatcher
+            # The mapping matches URLs using the following rules:
+            # ? matches one character
+            # * matches zero or more characters
+            # ** matches zero or more directories in a path
+            # {spring:[a-z]+} matches the regexp [a-z]+ as a path variable named "spring"
+            # Examples
+            # com/t?st.jsp — matches com/test.jsp but also com/tast.jsp or com/txst.jsp
+            # com/*.jsp — matches all .jsp files in the com directory
+            # com/**/test.jsp — matches all test.jsp files underneath the com path
+            # org/springframework/**/*.jsp — matches all .jsp files underneath the org/springframework path
+            # org/**/servlet/bla.jsp — matches org/springframework/servlet/bla.jsp but also org/springframework/testing/servlet/bla.jsp and org/servlet/bla.jsp
+            # com/{filename:\\w+}.jsp will match com/test.jsp and assign the value test to the filename variable
+            # - Path=/order/**
             - Path=/provider/depart/**
