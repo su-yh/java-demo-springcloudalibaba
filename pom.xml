@@ -28,6 +28,7 @@
         <module>02-provider-nacos</module>
         <module>03-provider-nacos-config</module>
         <module>demo-05-gateway</module>
+        <module>demo-06-gateway</module>
     </modules>
 
     <profiles>
