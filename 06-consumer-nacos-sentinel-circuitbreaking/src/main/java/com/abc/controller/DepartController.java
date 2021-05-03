@@ -58,6 +58,9 @@ public class DepartController {
      * value属性：设置资源的名称
      */
     //@SentinelResource(value = "getDepartById",fallback = "getHandleFallback")
+    // suyh - 慢调用熔断
+//    @SentinelResource(value = "slowRequestDegradeRule",fallback = "getFallback"
+//            ,fallbackClass = DepartServiceClassFallBack.class)
     @SentinelResource(value = "getDepartById",fallback = "getFallback"
             ,fallbackClass = DepartServiceClassFallBack.class)
     @GetMapping("/get/{id}")
