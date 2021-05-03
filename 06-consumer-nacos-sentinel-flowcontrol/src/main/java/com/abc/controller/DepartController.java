@@ -6,7 +6,14 @@ import com.alibaba.csp.sentinel.SphU;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -58,6 +65,7 @@ public class DepartController {
     /**
      * @SentinelResource 注解作用：声明当前方法为Sentinel的一个资源
      * fallback属性：设置降级处理方法
+     * blockHandler属性：流控兜底的方法
      * value属性：设置资源的名称
      */
     //@SentinelResource(value = "getDepartById",fallback = "getHandleFallback")
@@ -91,24 +99,25 @@ public class DepartController {
         return list;
     }
 
-//    @GetMapping("/get/{id}")
-//    public Depart getHandle(@PathVariable("id") int id) {
-//        Entry entry = null;
-//        try {
-//
-//            entry = SphU.entry("qpsFlowRule");
-//
-//            String url = SERVICE_PROVIDER + "/provider/depart/get/" + id;
-//            return restTemplate.getForObject(url, Depart.class);
-//
-//        } catch (BlockException e) {
-//            Depart depart = new Depart();
-//            depart.setName("我是被限流处理的结果！");
-//            return depart;
-//        } finally {
-//            if (entry != null) {
-//                entry.exit();
-//            }
-//        }
-//    }
+    // suyh - 这是另外 一种方式做流控处理。与使用注解(@SentinelResource)的方式相区别
+    @GetMapping("/get/other/{id}")
+    public Depart getHandleBackup(@PathVariable("id") int id) {
+        Entry entry = null;
+        try {
+
+            entry = SphU.entry("qpsFlowRule");
+
+            String url = SERVICE_PROVIDER + "/provider/depart/get/" + id;
+            return restTemplate.getForObject(url, Depart.class);
+
+        } catch (BlockException e) {
+            Depart depart = new Depart();
+            depart.setName("我是被限流处理的结果！");
+            return depart;
+        } finally {
+            if (entry != null) {
+                entry.exit();
+            }
+        }
+    }
 }
