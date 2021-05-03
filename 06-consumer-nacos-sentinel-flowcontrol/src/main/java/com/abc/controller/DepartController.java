@@ -1,7 +1,10 @@
 package com.abc.controller;
 
 import com.abc.bean.Depart;
+import com.alibaba.csp.sentinel.Entry;
+import com.alibaba.csp.sentinel.SphU;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -55,20 +58,24 @@ public class DepartController {
     /**
      * @SentinelResource 注解作用：声明当前方法为Sentinel的一个资源
      * fallback属性：设置降级处理方法
-     * value属性：设置资源的名称，该名称在这里只是相当于占位符一样，它的实际 降级处理是需要另外 配置的。
+     * value属性：设置资源的名称
      */
     //@SentinelResource(value = "getDepartById",fallback = "getHandleFallback")
-    // suyh - 慢调用熔断
-//    @SentinelResource(value = "slowRequestDegradeRule",fallback = "getFallback"
-//            ,fallbackClass = DepartServiceClassFallBack.class)
-    @SentinelResource(value = "getDepartById",fallback = "getFallback"
-            ,fallbackClass = DepartServiceClassFallBack.class)
+    @SentinelResource(value = "qpsFlowRule",blockHandler = "getHandleBlock")
     @GetMapping("/get/{id}")
     public Depart getHandle(@PathVariable("id") int id) {
         String url = SERVICE_PROVIDER + "/provider/depart/get/" + id;
         Depart depart = restTemplate.getForObject(url, Depart.class);
         return depart;
     }
+    //编写流控兜底的方法：注意流控的降级方法，需要多加入一个参数，否则这个方法不会被调用
+    //正常情况下：降级方法和被降级的方法参数及返回值类型都是要一样的
+    public Depart getHandleBlock(int id, BlockException ex) {
+        Depart depart = new Depart();
+        depart.setName("no any more~");
+        return depart;
+    }
+
     //服务降级处理方法: 类的单一职责原则
     public Depart getHandleFallback(@PathVariable("id") int id) {
         Depart depart = new Depart();
@@ -77,11 +84,31 @@ public class DepartController {
     }
     //跨服务根据列表查询
     @GetMapping("/list")
-    @SentinelResource(fallback = "listFallback"
-            ,fallbackClass = DepartServiceClassFallBack.class)
+    @SentinelResource(value = "qpsFlowRule_list")
     public List<Depart> listHandle() {
         String url = SERVICE_PROVIDER + "/provider/depart/list/";
         List list = restTemplate.getForObject(url, List.class);
         return list;
     }
+
+//    @GetMapping("/get/{id}")
+//    public Depart getHandle(@PathVariable("id") int id) {
+//        Entry entry = null;
+//        try {
+//
+//            entry = SphU.entry("qpsFlowRule");
+//
+//            String url = SERVICE_PROVIDER + "/provider/depart/get/" + id;
+//            return restTemplate.getForObject(url, Depart.class);
+//
+//        } catch (BlockException e) {
+//            Depart depart = new Depart();
+//            depart.setName("我是被限流处理的结果！");
+//            return depart;
+//        } finally {
+//            if (entry != null) {
+//                entry.exit();
+//            }
+//        }
+//    }
 }

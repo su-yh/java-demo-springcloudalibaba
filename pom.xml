@@ -33,6 +33,7 @@
         <module>06-provider-nacos-sentinel</module>
         <module>06-consumer-nacos-sentinel-degrade</module>
         <module>06-consumer-nacos-sentinel-circuitbreaking</module>
+        <module>06-consumer-nacos-sentinel-flowcontrol</module>
     </modules>
 
     <profiles>
