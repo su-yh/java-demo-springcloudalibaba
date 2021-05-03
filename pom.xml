@@ -29,6 +29,8 @@
         <module>03-provider-nacos-config</module>
         <module>demo-05-gateway</module>
         <module>demo-06-gateway</module>
+        <module>06-consumer-nacos-sentinel</module>
+        <module>06-provider-nacos-sentinel</module>
     </modules>
 
     <profiles>
