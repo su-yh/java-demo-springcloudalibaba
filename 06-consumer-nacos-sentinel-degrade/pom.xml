@@ -11,6 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>06-consumer-nacos-sentinel-degrade</artifactId>
+    <description>用来演示服务降级的工程</description>
 
     <properties>
         <java.version>1.8</java.version>

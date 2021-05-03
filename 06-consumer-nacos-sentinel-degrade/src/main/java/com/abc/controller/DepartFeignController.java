@@ -16,11 +16,13 @@ import java.util.List;
 
 /**
  * 消费者Controller
+ * 以Feign的方式实现的服务降级的controller，主要是与之前的做区分
  */
 @RestController
 @RequestMapping("/feign/consumer/depart")
 public class DepartFeignController {
 
+    // suyh - FeignClient service
     @Autowired
     private DepartService departService;
 

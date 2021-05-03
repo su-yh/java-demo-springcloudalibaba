@@ -12,7 +12,7 @@ import java.util.List;
  * @RequestMapping("/fallback/consumer/depart") 主要是为了解决bug的
  */
 @Component//注意：服务降级处理类必须注入Spring的容器中
-@RequestMapping("/fallback/consumer/depart")
+@RequestMapping("/fallback/consumer/depart")    // 这里面的地址可以随便写，只要没有冲突就可以了。
 public class DepartServiceFallback implements DepartService {
     @Override
     public boolean saveDepart(Depart depart) {

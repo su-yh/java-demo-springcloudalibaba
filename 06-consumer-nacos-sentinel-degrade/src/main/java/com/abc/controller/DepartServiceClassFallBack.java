@@ -8,6 +8,7 @@ import java.util.List;
 //服务降级处理类
 public class DepartServiceClassFallBack {
 
+    // suyh - 在这里我们将异常获取到，然后可以利用这个异常做相关的操作。
     public static Depart getFallback(int id, Throwable e){
         System.out.println("getHandle()执行异常 " + id);
 //        Depart depart = new Depart();

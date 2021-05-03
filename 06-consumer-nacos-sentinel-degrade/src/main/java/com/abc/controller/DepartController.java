@@ -59,19 +59,20 @@ public class DepartController {
         restTemplate.put(url, depart, Boolean.class);
     }
 
-    /**
+    /*
      * @SentinelResource 注解作用：声明当前方法为Sentinel的一个资源
      * fallback属性：设置降级处理方法
-     * value属性：设置资源的名称
+     * value属性：设置资源的名称，该名称会在sentinel 中进行显示。
      */
+    // suyh - 方法级别的降级
     //@SentinelResource(value = "getDepartById",fallback = "getHandleFallback")
-    @SentinelResource(fallback = "getFallback"
-            ,fallbackClass = DepartServiceClassFallBack.class)
+    // suyh - 将降级方法抽取到一个静态类中
+    @SentinelResource(fallback = "getFallback",
+            fallbackClass = DepartServiceClassFallBack.class)
     @GetMapping("/get/{id}")
     public Depart getHandle(@PathVariable("id") int id) {
         String url = SERVICE_PROVIDER + "/provider/depart/get/" + id;
-        Depart depart = restTemplate.getForObject(url, Depart.class);
-        return depart;
+        return restTemplate.getForObject(url, Depart.class);
     }
     //服务降级处理方法: 类的单一职责原则
     public Depart getHandleFallback(@PathVariable("id") int id) {
@@ -85,7 +86,6 @@ public class DepartController {
             ,fallbackClass = DepartServiceClassFallBack.class)
     public List<Depart> listHandle() {
         String url = SERVICE_PROVIDER + "/provider/depart/list/";
-        List list = restTemplate.getForObject(url, List.class);
-        return list;
+        return restTemplate.getForObject(url, List.class);
     }
 }
