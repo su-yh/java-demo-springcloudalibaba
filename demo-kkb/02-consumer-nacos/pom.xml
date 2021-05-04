@@ -12,6 +12,8 @@
 
     <artifactId>02-consumer-nacos</artifactId>
 
+    <description>该工程作为客户端。主要是连接到注册中心，获取到provider 并通过provider 进行访问</description>
+
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
