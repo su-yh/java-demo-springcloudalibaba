@@ -1,3 +1,5 @@
+#server:
+#  port: 9000
 
 spring:
   cloud:
@@ -31,3 +33,4 @@ spring:
             # com/{filename:\\w+}.jsp will match com/test.jsp and assign the value test to the filename variable
             # - Path=/order/**
             - Path=/provider/depart/**
+

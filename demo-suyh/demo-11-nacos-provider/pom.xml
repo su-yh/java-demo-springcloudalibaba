@@ -11,7 +11,11 @@
 
     <artifactId>demo-11-nacos-provider</artifactId>
 
-    <description>一个demo: 注册到nacos 中的服务提供者</description>
+    <description>
+        1. 连到nacos 注册中心；
+        2. 连到nacos 配置中心；
+        3. 连到sentinel 流量防卫兵；
+    </description>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

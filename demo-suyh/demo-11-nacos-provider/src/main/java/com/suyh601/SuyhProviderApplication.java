@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class NacosConfigProviderApplication {
+public class SuyhProviderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(NacosConfigProviderApplication.class, args);
+        SpringApplication.run(SuyhProviderApplication.class, args);
     }
 
 }
