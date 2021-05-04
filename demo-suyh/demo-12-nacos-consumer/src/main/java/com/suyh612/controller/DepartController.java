@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 //提供者Controller，对外提供接口
-@RequestMapping("/provider/depart")
+@RequestMapping("/consumer/depart")
 @RestController
 @RefreshScope
 public class DepartController {
