@@ -2,7 +2,7 @@
 spring:
   application:
     # 配置应用名称
-    name: msc-provider-depart
+    name: msc-suyh-provider
   cloud:
     nacos:
       # 配置中心相关配置
@@ -16,6 +16,8 @@ spring:
         # namespace: suyh-namespace-id
         # 是否永远动态刷配置值，如果该值为false。则注解 @RefreshScope 被标注也是无效的，不会动态获取到实时更新的配置值
         refresh-enabled: true
+        name: msc-suyh-provider
       discovery:
         # server-addr: localhost:8848,localhost:8847,localhost:8849
         server-addr: localhost:8848
+

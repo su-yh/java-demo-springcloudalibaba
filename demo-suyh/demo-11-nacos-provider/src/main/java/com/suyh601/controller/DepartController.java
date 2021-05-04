@@ -23,6 +23,9 @@ public class DepartController {
     @Value("${depart.name:UNKNOWN-VALUE}")
     private String departName;
 
+    @Value("${spring.application.name}")
+    private String serviceName;
+
     @Value("${server.port}")
     private int port;
 
@@ -59,5 +62,15 @@ public class DepartController {
     @GetMapping("/depart/name")
     public String departName() {
         return departName + " - " + port;
+    }
+
+    @GetMapping("/service/info")
+    public String serviceInfo() {
+        return serviceName + ": " + port;
+    }
+
+    @GetMapping("/service/show")
+    public String serviceShow() {
+        return serviceName + ": " + port + " - " + departName;
     }
 }
