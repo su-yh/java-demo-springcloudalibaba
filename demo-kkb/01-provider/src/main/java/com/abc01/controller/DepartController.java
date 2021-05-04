@@ -1,6 +1,6 @@
-package com.abc.controller;
+package com.abc01.controller;
 
-import com.abc.bean.Depart;
+import com.abc01.bean.Depart;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
