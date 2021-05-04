@@ -8,13 +8,14 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>demo-60-gateway-config</artifactId>
     <packaging>pom</packaging>
+
+    <description>以配置文件的方式进行网关路由的相关处理</description>
+
     <modules>
-        <module>demo-601-nacos-provider</module>
         <module>demo-611-gateway-config</module>
     </modules>
-
-    <artifactId>demo-06-gateway</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -24,13 +25,7 @@
         <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-    </dependencies>
+
 
     <dependencyManagement>
         <dependencies>

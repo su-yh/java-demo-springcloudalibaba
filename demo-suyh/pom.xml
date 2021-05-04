@@ -20,8 +20,18 @@
     </properties>
 
     <modules>
-        <module>demo-06-gateway</module>
+        <module>demo-11-nacos-provider</module>
+        <module>demo-60-gateway-config</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
     <profiles>
         <profile>
             <!-- 台式机电脑的配置 -->
