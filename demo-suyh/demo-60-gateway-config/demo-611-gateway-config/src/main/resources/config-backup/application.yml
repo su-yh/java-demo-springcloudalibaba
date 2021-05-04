@@ -1,6 +1,9 @@
 #server:
 #  port: 9000
 
+com:
+  suyh: suyh-value
+
 spring:
   cloud:
     gateway:
@@ -13,7 +16,7 @@ spring:
         # 路由唯一ID
         - id: provider_router
           # 路由目标地址
-          uri: lb://msc-provider-depart
+          uri: lb://msc-suyh-provider
           # 断言：拦截请求的规则
           # 详细拦截规则：/** 表示拦截所有请求，不管有几级 /abc/bcd/edf/...
           # /* 只拦截 /abc 一级
@@ -33,4 +36,12 @@ spring:
             # com/{filename:\\w+}.jsp will match com/test.jsp and assign the value test to the filename variable
             # - Path=/order/**
             - Path=/provider/depart/**
+        - id: consumer_router
+          # 路由目标地址
+          uri: lb://msc-suyh-consumer
+          # 断言：拦截请求的规则
+          # 详细拦截规则：/** 表示拦截所有请求，不管有几级 /abc/bcd/edf/...
+          # /* 只拦截 /abc 一级
+          predicates:
+            - Path=/consumer/depart/**
 
