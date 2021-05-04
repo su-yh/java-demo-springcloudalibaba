@@ -1,0 +1,13 @@
+depart:
+  name: depart-suyh-namespace-001
+
+# 配置日志
+logging:
+  pattern:
+    console: level-%level %msg%n
+  level:
+    root: info
+    org.hibernate: info
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.type.descriptor.sql.BasicExtractor: trace
+    com.abc: debug

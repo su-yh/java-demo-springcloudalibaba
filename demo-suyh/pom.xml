@@ -27,6 +27,7 @@
 
     <modules>
         <module>demo-11-nacos-provider</module>
+        <module>demo-12-nacos-consumer</module>
         <module>demo-60-gateway-config</module>
     </modules>
 

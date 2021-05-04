@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>demo-11-nacos-provider</artifactId>
+    <artifactId>demo-12-nacos-consumer</artifactId>
 
     <description>
         1. 连到nacos 注册中心；
