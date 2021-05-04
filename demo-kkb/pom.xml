@@ -26,13 +26,20 @@
         <module>02-provider-nacos</module>
         <module>03-provider-nacos-config</module>
         <module>demo-05-gateway</module>
-<!--        <module>demo-06-gateway</module>-->
         <module>06-consumer-nacos-sentinel</module>
         <module>06-provider-nacos-sentinel</module>
         <module>06-consumer-nacos-sentinel-degrade</module>
         <module>06-consumer-nacos-sentinel-circuitbreaking</module>
         <module>06-consumer-nacos-sentinel-flowcontrol</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
 
     <profiles>
         <profile>
