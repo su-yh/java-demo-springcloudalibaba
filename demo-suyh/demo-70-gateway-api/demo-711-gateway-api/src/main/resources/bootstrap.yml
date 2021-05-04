@@ -2,7 +2,7 @@
 spring:
   application:
     # 配置应用名称
-    name: msc-suyh-gateway-config
+    name: msc-suyh-gateway-api
   cloud:
     nacos:
       # 配置中心相关配置

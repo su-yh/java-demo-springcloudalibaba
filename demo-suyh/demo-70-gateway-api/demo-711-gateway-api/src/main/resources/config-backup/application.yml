@@ -1,0 +1,14 @@
+#server:
+#  port: 10000
+
+com:
+  suyh: suyh-value-gateway-api
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # 配置开启与DiscoveryClient整合
+          enabled: true
+
